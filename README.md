@@ -155,13 +155,14 @@
 
 	梯度下降是一种基于一阶导数的优化算法，它通过计算目标函数在当前参数位置的梯度方向，并沿着该方向更新参数。具体来说，假设当前的参数为 $\theta$ ，损失函数为 $J(\theta)$ ，则梯度下降算法的迭代公式为：
 
-	$$\theta^{(t+1)}=\theta^{(t)} - \eta\nabla_{\theta}J(\theta^{(t)})$$
+	$\theta^{(t+1)}=\theta^{(t)} - \eta\nabla_{\theta}J(\theta^{(t)})$
 
 	其中， $\eta$ 是学习率，表示更新的步长大小，$\nabla_{\theta}J(\theta^{(t)})$ 表示目标函数在当前参数位置 $\theta^{(t)}$ 的梯度。梯度下降的缺点在于，由于每次更新只考虑了当前位置的梯度，因此可能会出现步长过大或过小的情况，导致优化过程过程缓慢或者错过最优解。
 
 	拟牛顿法是一种基于二阶导数的优化算法，它通过估计目标函数的Hessian矩阵，来确定更新参数的方向和步长。具体来说，假设当前的参数为 $\theta$ ，损失函数为 $J(\theta)$ ，则拟牛顿法的迭代公式为：
+	
 
-	$$\theta^{(t+1)}=\theta^{(t)} - H^{-1}\nabla_{\theta}J(\theta^{(t)})$$
+	$\theta^{(t+1)}=\theta^{(t)} - H^{-1}\nabla_{\theta}J(\theta^{(t)})$
 
 	其中， $H$ 是Hessian矩阵的近似值，通常使用BFGS算法或L-BFGS算法来估计。由于拟牛顿法考虑了目标函数的二阶导数信息，因此可以更快地收敛到最优解，并且可以自适应地调整步长大小。
 
@@ -255,7 +256,7 @@
 
   	Sigmoid 函数可以将实数值映射到 $(0,1)$ 的区间内。其公式为：
 
-  	$$\sigma(x)=\frac{1}{1+e^{-x}}$$
+  	$\sigma(x)=\frac{1}{1+e^{-x}}$
 
   	其导数为：
 
@@ -265,11 +266,11 @@
 
     ReLU 函数可以将负值直接置为 $0$ ，可以有效地避免梯度消失问题。其公式为：
 
-    $$\text{ReLU}(x)=\max(0,x)$$
+    $\text{ReLU}(x)=\max(0,x)$
 
     其导数为：
 
-    $$\frac{\partial}{\partial x}\text{ReLU}(x)=\begin{cases} 1 & (x>0) \ 0 & (x\leq0) \end{cases}$$
+    $\frac{\partial}{\partial x}\text{ReLU}(x)=\begin{cases} 1 & (x>0) \ 0 & (x\leq0) \end{cases}$
 
     虽然ReLU激活函数在输入为0的点上不可导，但这在实际中并不会对神经网络的训练带来太大影响。在实现中，可以将输入为0的点的导数定义为0，从而避免对反向传播算法的影响。
 
@@ -283,17 +284,17 @@
 
   	其导数为：
 
-  	$$\frac{\partial}{\partial x}\text{LeakyReLU}(x)=\begin{cases} 1 & (x>0) \ \alpha & (x\leq0) \end{cases}$$
+  	$\frac{\partial}{\partial x}\text{LeakyReLU}(x)=\begin{cases} 1 & (x>0) \ \alpha & (x\leq0) \end{cases}$
 
   4. Tanh 函数：
 
   	Tanh 函数可以将实数值映射到 $(-1,1)$ 的区间内。其公式为：
 
-  	$$\text{tanh}(x)=\frac{e^x-e^{-x}}{e^x+e^{-x}}$$
+  	$\text{tanh}(x)=\frac{e^x-e^{-x}}{e^x+e^{-x}}$
 
   	其导数为：
 
-  	$$\frac{\partial}{\partial x}\text{tanh}(x)=1-\text{tanh}^2(x)$$
+  	$\frac{\partial}{\partial x}\text{tanh}(x)=1-\text{tanh}^2(x)$
 
   
 
