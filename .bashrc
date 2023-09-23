@@ -1,8 +1,3 @@
-# >>> conda initialize >>>
-# !! Contents within this block are managed by 'conda init' !!
-eval "$('/d/anaconda/Scripts/conda.exe' 'shell.bash' 'hook')"
-# <<< conda initialize <<<
-
 function git_branch {
     branch="$(git branch 2>/dev/null | grep "^\*" | sed -e "s/^\*\ //")"
     if [ "${branch}" != "" ]; then
@@ -29,3 +24,8 @@ function get_pwd {
 }
 
 export PS1='\[$(get_pwd)\]\[\033[01;36m\]$(git_branch)\[\033[00m\]\$ '
+
+# >>> conda initialize >>>
+# !! Contents within this block are managed by 'conda init' !!
+eval "$('/d/anaconda/Scripts/conda.exe' 'shell.bash' 'hook')"
+# <<< conda initialize <<<
