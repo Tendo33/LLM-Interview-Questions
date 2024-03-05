@@ -7,6 +7,8 @@
 
 ![Untitled](LLM基础知识 images/Untitled.png)
 
+<img src="LLM基础知识 images/Untitled.png"> 
+
 - **FLOPS"和"FLOPs**
   
     1. **FLOPS (Floating Point Operations Per Second):**
