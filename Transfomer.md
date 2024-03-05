@@ -69,10 +69,10 @@
     
     - **RoPE旋转位置编码**
       
-        ![faa7a66afb64fb6da87f9daef3e7323.jpg](Transfomer images/Untitled 2.jpg)
+        <img src="Transfomer images/Untitled 2.jpg">
         
     
-    ![Untitled](Transfomer images/Untitled.png)
+    <img src="Transfomer images/Untitled 1.png">
     
 - **简单讲一下Transformer中的残差结构以及意义。**
   
@@ -189,4 +189,4 @@
             - 将文本划分为多个segments；
             - 训练的时候，对每个segment单独处理；
             
-            ![Untitled](Transfomer images/Untitled 1.png)
+           <img src="Transfomer images/Untitled 1.png">

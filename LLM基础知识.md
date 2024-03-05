@@ -5,8 +5,6 @@
 | Top-p抽样 | 模型从累计概率大于或等于“p”的最小集合中随机选择一个 | 如果p=0.9，选择的单词集将是概率累计到0.9的那部分 |
 | Temperature | 控制生成文本随机性的参数。较高的温度值会产生更随机的输出，而较低的温度值则会使模型更倾向于选择最可能的单词 | 较高的温度值，如1.0，会产生更随机的输出，而较低的温度值，如0.1，会使模型更倾向于选择最可能的单词 |
 
-![Untitled](LLM基础知识 images/Untitled.png)
-
 <img src="LLM基础知识 images/Untitled.png"> 
 
 - **FLOPS"和"FLOPs**
@@ -71,9 +69,8 @@
 - **思维链 CoT（Chain-of-Thought）相关**
     1. **CoT** 提示过程是一种最近开发的提示方法，它鼓励大语言模型解释其推理过程。思维链的主要思想是通过向大语言模型展示一些少量的 exapmles，在样例中解释推理过程，大语言模型在回答提示时也会显示推理过程。这种推理的解释往往会引导出更准确的结果。
        
-        ![Untitled](LLM基础知识 images/Untitled 1.png)
-        
-        ![Untitled](LLM基础知识 images/Untitled 2.png)
+        <img src="LLM基础知识 images/Untitled 1.png">
+        <img src="LLM基础知识 images/Untitled 2.png">
         
         CoT 在实现上修改了 demonstration 每个 example 的 target，source 保留原样，但 target 从原先的 answer(a) 换成了 rationale(r) + a。因此可以看到右侧，所有内容均由模型生成，模型不是生成 a，而是生成 r+a。
         
@@ -83,7 +80,7 @@
        
         在下面的图中，左侧的提示是使用少样本思维链范例编写的。使用这个提示，独立生成多个思维链，从每个思维链中提取答案，通过“边缘化推理路径”来计算最终答案。实际上，这意味着取多数答案。
         
-        ![Untitled](LLM基础知识 images/Untitled 3.png)
+      <img src="LLM基础知识 images/Untitled 3.png">
         
     3. **LtM （Least to Most prompting）提示**
        
@@ -93,9 +90,9 @@
         
         简单来说就是一步一步来，step by step。单纯的 CoT 不足以解决复杂问题，但是我们可以把它分解成一个个小问题，然后再使用 CoT，这样模型就能把问题求解出来。所以从这个角度看，Least-to-Most 和 CoT 不是选择关系，而是可以互相打配合的。
         
-        ![Untitled](LLM基础知识 images/Untitled 4.png)
+        <img src="LLM基础知识 images/Untitled 4.png">
         
-        ![Untitled](LLM基础知识 images/Untitled 5.png)
+        <img src="LLM基础知识 images/Untitled 5.png">
         
     
     可以看到，在Chain-of-thought训练中，将数据集中的输入分解为一系列任务是非常关键的一步。一般来说，这个过程需要根据特定的任务和数据集来进行定制。以下是一些通用的方法：
@@ -142,7 +139,7 @@
     
     因此，Prompt和Instruction都是用于指导模型生成输出的文本，但它们的目的和使用方式是不同的。Prompt更多地用于帮助模型理解任务和上下文，而Instruction则更多地用于指导模型执行具体操作或完成任务。
     
-    ![Untitled](LLM基础知识 images/Untitled 6.png)
+    <img src="LLM基础知识 images/Untitled 6.png">
     
 - **在指令微调中，如何选择最佳的指令策略，以及其对模型效果的影响？**
   
@@ -163,7 +160,7 @@
     
 - **解决显存不够的方法有哪些？**
   
-    ![Untitled](LLM基础知识 images/Untitled 7.png)
+    <img src="LLM基础知识 images/Untitled 7.png">
     
     ---
     
@@ -195,7 +192,7 @@
         - fp16训练是稳定的，但（可能）很难收敛
         - 混合精度训练需要在内存中存储模型的fp16/bf16和fp32版本，因此需要：Mixed-precision (fp16/bf16 and fp32)，加上一份放在optimizer state中的fp32的拷贝。
         
-        ![v2-3b81fa8af962c682b9c55ee48014af0e_r.png](LLM基础知识 images/Untitled 13.png)
+        <img src="LLM基础知识 images/Untitled 13.png">
         
     - **处理优化器 optimizer state**
       
@@ -244,7 +241,7 @@
     - 会使得输入层有效信息长度减少。为了节省计算量和显存，我们一般会固定输入数据长度。增加了prefix之后，留给原始文字数据的空间就少了，因此可能会降低原始文字中prompt的表达能力。
 - **Lora的原理**
   
-    ![Untitled](LLM基础知识 images/Untitled 8.png)
+    <img src="LLM基础知识 images/Untitled 8.png">
     
     lora：Low-Rank Adaptation 具体来说，就是考虑到语言模型（LLM尤其如此）的参数的低秩属性（low intrinsic dimension），或者说过参数化，在做finetune的时候不做full-finetune，而是用一个降维矩阵A和一个升维矩阵B去做finetune。
     
@@ -298,7 +295,7 @@
         - 另外就是，layer norm的层可能会完全使用float32，因为需要计算一组值的均值和方差，而这需要进行加法和除法运算，所以float16可能会出岔子。
         - 不过针对还要保存一份float32参数这很不舒服的一点，我们题外话一下就是，你完全可以用QLoRA，也就是量化线性层+lora，反正线性层不会更新参数，我只用它进行前向传播，因此也不用存一份额外的参数；而lora的部分可以采用float16精度来训练，这一部分就算额外保存参数也不会占用很多显存。这样的话相当于把量化+lora的各自优点都拿出来。
         
-        ![v2-3b81fa8af962c682b9c55ee48014af0e_r.png](LLM基础知识 images/Untitled 13.png)
+        <img src="LLM基础知识 images/Untitled 13.png">
     
 - **如何增加context length 模型训练中节约显存的技巧。**
   
@@ -310,7 +307,7 @@
     
 - **RLHF完整训练过程是什么？RL过程中涉及到几个模型？显存占用关系和SFT有什么区别？**
   
-    ![Untitled](LLM基础知识 images/Untitled 9.png)
+    <img src="LLM基础知识 images/Untitled 9.png">
     
     RLHF基于A2C方法，这一步包含了四个模型:
     
@@ -330,11 +327,11 @@
     - reward_score: 由Reward Model产生，为当前句子状态下，立即获取的收益分数。
     - values：由Critic Model产生，估计当前句子状态下，到完成生成，可以获取的回报
     
-    ![Untitled](LLM基础知识 images/Untitled 10.png)
+    <img src="LLM基础知识 images/Untitled 10.png">
     
 - **RLHF过程中RM随着训练过程得分越来越高，效果就一定好吗？有没有极端情况？**
   
-    ![Untitled](LLM基础知识 images/Untitled 11.png)
+    <img src="LLM基础知识 images/Untitled 11.png">
     
 - **encoder only，decoder only，encoder-decoder 划分的具体标注是什么？典型代表模型有哪些？**
   
@@ -367,4 +364,4 @@
     - 知识图谱：这种方法是在LLM生成内容时，利用一个结构化的知识库（知识图谱）来提供事实信息和逻辑推理，以增强LLM的理解和回答能力。这种方法的优点是可以提高内容的有意义性和忠实性，提供更丰富和更深入的信息；缺点是需要构建和维护一个大规模且高质量的知识图谱，而且可能存在知识图谱不完备或不更新的问题。
 - **模型训练时，显存占用**
   
-    ![Untitled](LLM基础知识 images/Untitled 12.png)
+    <img src="LLM基础知识 images/Untitled 12.png">
