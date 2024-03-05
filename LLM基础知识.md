@@ -8,7 +8,7 @@
 ![Untitled](LLM基础知识 images/Untitled.png)
 
 - **FLOPS"和"FLOPs**
-    
+  
     1. **FLOPS (Floating Point Operations Per Second):**
         - FLOPS是计量计算机或计算设备每秒能够执行的浮点运算次数的单位。这是衡量计算性能的一种指标，尤其在科学计算、模拟和其他需要大量浮点运算的领域非常重要。
         - 例如，1 GFLOPS表示每秒执行十亿次浮点运算。这可以包括加法、减法、乘法和除法等操作。
@@ -69,7 +69,7 @@
 - **思维链 CoT（Chain-of-Thought）相关**
     1. **CoT** 提示过程是一种最近开发的提示方法，它鼓励大语言模型解释其推理过程。思维链的主要思想是通过向大语言模型展示一些少量的 exapmles，在样例中解释推理过程，大语言模型在回答提示时也会显示推理过程。这种推理的解释往往会引导出更准确的结果。
        
-        <img src="LLM基础知识 images/Untitled 1.png" alt="Untitled" style="zoom:80%;" />
+        ![Untitled](LLM基础知识 images/Untitled 1.png)
         
         ![Untitled](LLM基础知识 images/Untitled 2.png)
         
