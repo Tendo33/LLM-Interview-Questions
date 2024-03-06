@@ -70,9 +70,6 @@
     - **RoPE旋转位置编码**
       
         <img src="Transfomer images/Untitled 2.jpg">
-        
-    
-    <img src="Transfomer images/Untitled 1.png">
     
 - **简单讲一下Transformer中的残差结构以及意义。**
   
